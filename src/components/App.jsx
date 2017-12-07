@@ -50,7 +50,6 @@ export default class App extends React.PureComponent {
 
   updateJson(state){
     // Possible de MAJ le fichier JSON ? google n'a pas l'air de cet avis
-    console.log('');
   }
 
   updateElement(element, e){
@@ -63,7 +62,7 @@ export default class App extends React.PureComponent {
     let newTodos = this.state.todos.slice();
     let elementPos = newTodos.map(function(x) {return x.id; }).indexOf(element.id);
 
-    // On update aussi nos filter
+    // On update aussi nos filters
     let newFilteredTodos = this.state.filtered.todos.slice();
     let elementPosFiltered = newFilteredTodos.map(function(x) {return x.id; }).indexOf(element.id);
 
@@ -76,7 +75,6 @@ export default class App extends React.PureComponent {
       if(this.state.filtered.tab === "done"){newFilteredTodos.splice(elementPosFiltered, 1)}
     }
 
-    console.log("clikk");
     this.setState({
       todos: newTodos,
       next_id: this.state.next_id,
@@ -89,12 +87,10 @@ export default class App extends React.PureComponent {
     let elementPos = newTodos.map(function(x) {return x.id; }).indexOf(element.id);
     newTodos.splice(elementPos, 1);
 
-    // On update aussi nos filter
+    // On update aussi nos filters
     let newFilteredTodos = this.state.filtered.todos.slice();
     let elementPosFiltered = newFilteredTodos.map(function(x) {return x.id; }).indexOf(element.id);
     newFilteredTodos.splice(elementPosFiltered, 1);
-
-    console.log("clikk");
 
     this.setState({
       todos: newTodos,
@@ -118,11 +114,9 @@ export default class App extends React.PureComponent {
     })
   }
 
-  // update & delete Element ne fonctionne que au premier click ?
-
   render() {
     let elementToDisplay = this.state.todos;
-    // Pourquoi tab est undefined au mount ?
+    // Pourquoi tab est undefined au mount du composant?
     if (this.state.filtered.tab !== "all"){
       console.log('filtered', (this.state.filtered.tab));
       elementToDisplay = this.state.filtered.todos
