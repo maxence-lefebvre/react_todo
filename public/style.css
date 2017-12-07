@@ -1,0 +1,8 @@
+.actif{
+
+}
+
+.no-actif{
+  color:grey;
+  text-decoration: line-through;
+}
